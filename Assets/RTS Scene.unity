@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373992145}
   - component: {fileID: 373992144}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 426601454}
   - component: {fileID: 426601453}
   - component: {fileID: 426601452}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +397,9 @@ MonoBehaviour:
   cameraRotationMinMax: {x: 15, y: 70}
   zoomLerp: 0.1
   cursorTreshold: 0.05
+  commandLayerMask:
+    serializedVersion: 2
+    m_Bits: 2816
 --- !u!1 &803162033
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,12 +498,6 @@ RectTransform:
   m_AnchoredPosition: {x: 526, y: 314.5}
   m_SizeDelta: {x: 1052, y: 629}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &944269899 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
-    type: 3}
-  m_PrefabInstance: {fileID: 1456544133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1117289137
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117289138}
   - component: {fileID: 1117289139}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WindZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1295095622}
   - component: {fileID: 1295095623}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Directional Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,15 +642,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2218301557742913256, guid: 23a9b8bb06e212640818578d30b8d356,
-        type: 3}
-      propertyPath: offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 86405762, guid: 23a9b8bb06e212640818578d30b8d356, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 944269899}
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}
       propertyPath: m_RootOrder
@@ -667,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4556074
+      value: -1.753
       objectReference: {fileID: 0}
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}
@@ -879,12 +867,12 @@ PrefabInstance:
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 432.23
+      value: 432.011
       objectReference: {fileID: 0}
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4556074
+      value: -1.046
       objectReference: {fileID: 0}
     - target: {fileID: 6057641077784452281, guid: 23a9b8bb06e212640818578d30b8d356,
         type: 3}

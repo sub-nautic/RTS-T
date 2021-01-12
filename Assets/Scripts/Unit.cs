@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
+    public enum Task
+    {
+        idle, move, follow, chase, atack
+    }
+    
     const string ANIMATOR_SPEED ="Speed",
         ANIMATOR_ALIVE = "Alive",
         ANIMATOR_ATACK = "Atack";
@@ -12,6 +17,7 @@ public class Unit : MonoBehaviour
     public static List<ISelectable> SelectableUnits { get { return selectableUnits; } }
     static List<ISelectable> selectableUnits = new List<ISelectable>();
     
+    public bool IsAlive { get { return hp > 0; } }
     public float HealthPercent {get { return hp / hpMax; } }
 
     public Transform target;
@@ -20,11 +26,14 @@ public class Unit : MonoBehaviour
     float hp, hpMax = 100;
     [SerializeField]
     GameObject hpBarPrefab;
+    [SerializeField]
+    float stoppingDistance = 1;
 
     protected HealthBar healthBar;
-
-    NavMeshAgent nav;
+    
     Animator animator;
+    protected Task task = Task.idle;
+    protected NavMeshAgent nav;
 
     private void Awake()
     {
@@ -49,13 +58,52 @@ public class Unit : MonoBehaviour
         }
 
     void Update()
-    {
+    {        
+        if (IsAlive)
+            switch (task)
+            {
+                case Task.idle: Idling(); break;
+                case Task.move: Moveing(); break;
+                case Task.follow: Following(); break;
+                case Task.chase: Chasing(); break;
+                case Task.atack: Atacking(); break;
+            }
+        Animate();
+    }
+
+    protected virtual void Idling() 
+    { 
+        nav.velocity = Vector3.zero;
+    }
+    protected virtual void Atacking() 
+    { 
+        nav.velocity = Vector3.zero;
+    }
+    
+    protected virtual void Moveing() 
+    { 
+        float distance = Vector3.Magnitude(nav.destination - transform.position);
+        if (distance <= stoppingDistance)
+        {
+            task = Task.idle;
+        }
+    }
+    protected virtual void Following() 
+    { 
         if (target)
         {
             nav.SetDestination(target.position);
         }
-        Animate();
+        else
+        {
+            task = Task.idle;
+        }
     }
+    protected virtual void Chasing() 
+    { 
+
+    }
+    
 
     protected virtual void Animate()
     {
@@ -63,7 +111,9 @@ public class Unit : MonoBehaviour
         speedVector.y = 0;
         float speed = speedVector.magnitude;
         animator.SetFloat(ANIMATOR_SPEED, speed);
-        animator.SetBool(ANIMATOR_ALIVE, hp > 0);
+        animator.SetBool(ANIMATOR_ALIVE, IsAlive);
     }
+
+    
 
 }
